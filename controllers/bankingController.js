@@ -19,7 +19,14 @@ app.post("/customers",function(request,response){
     response.send({message:"Data Sored....."});
 })
 
+app.get("/customers",function(request,response){
+console.log(request.query.userName);
+data=customerService.findCustomer(request.query.userName);
 
+        response.send({message:data});
+
+
+});
 
 
 
