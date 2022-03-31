@@ -5,5 +5,5 @@ exports.port=4000
 exports.url='127.0.0.1'
 exports.mongodb='bankingdb'
 exports.mongoport=27017
-
+exports.uri='mongodb://localhost:27017/happytripdb'
 

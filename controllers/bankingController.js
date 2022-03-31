@@ -3,6 +3,7 @@ express=require('express')
 cors=require('cors')
 bodyParser=require('body-parser')
 config=require('../configurations/config')
+var customerService = require("../services/customerservice");
 app=new express()
 app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: true }));
@@ -13,6 +14,8 @@ app.get("/",function(request,response){
 });
 app.post("/customers",function(request,response){
     console.log(request.body);
+    customerService.Add(request.body);
+
     response.send({message:"Data Sored....."});
 })
 
