@@ -31,19 +31,10 @@ module.exports.Add=function(customerObj)
 
 //search
 
-module.exports.findCustomer = function(userName)
-{
-     data = CustomerModel.findOne({ userName:userName }) .exec(function (err, result){
-       console.log(result);
-        return(result)
-    })
-
-    return data;
-
-
+module.exports.Search= function getCustomer(userName){
+    var query = CustomerModel.find({userName:userName});
+    return query;
 }
-
-
 
 
 

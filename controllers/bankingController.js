@@ -21,10 +21,19 @@ app.post("/customers",function(request,response){
 
 app.get("/customers",function(request,response){
 console.log(request.query.userName);
-data=customerService.findCustomer(request.query.userName);
+query=customerService.Search(request.query.userName);
 
-        response.send({message:data});
 
+    query.exec(function(err,data){
+        if(err) {
+            console.log(err)
+            return response.json(500, err);
+        }
+        else {
+            console.log(data);
+            return response.json(200, data);
+        }
+    });
 
 });
 
