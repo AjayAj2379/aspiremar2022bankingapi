@@ -1,11 +1,15 @@
 const fs = require("fs");
 express=require('express')
 var multer  =   require('multer');
+const path = require("path")
 cors=require('cors')
 bodyParser=require('body-parser')
 config=require('../configurations/config')
 var customerService = require("../services/customerservice");
+
 app=new express()
+
+//app.set("views",path.join(__dirname,"views"))
 app.use(cors());
 //app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
@@ -74,11 +78,12 @@ var upload = multer({
     }
 
 // mypic is the name of file attribute
-}).single("mypic");
+}).single("profilepic");
 
 app.post('/upload-file',function(req,res){
     // Error MiddleWare for multer file upload, so if any
     // error occurs, the image would not be uploaded!
+    //console.log(req);
     upload(req,res,function(err) {
 
         if(err) {
